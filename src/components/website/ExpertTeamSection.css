@@ -1,0 +1,241 @@
+.expert-team-section {
+  background: #fff;
+  padding: 65px 0 65px 0;
+}
+
+.team-head {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.team-label {
+  color: #fa4b89;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 7px;
+  display: inline-block;
+  position: relative;
+  letter-spacing: 0.01em;
+}
+
+.team-label::after {
+  content: "";
+  display: block;
+  width: 78px;
+  height: 3px;
+  background: #fa4b89;
+  border-radius: 2px;
+  margin: 3px auto 0;
+  opacity: 0.18;
+}
+
+.team-head h2 {
+  color: #373969;
+  font-size: 50px;
+  font-weight: 800;
+  margin: 0;
+  line-height: 1.11;
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+}
+
+.slider-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 25px;
+  position: relative;
+  overflow: hidden;
+}
+
+.team-slider {
+  padding: 0 20px;
+}
+
+.team-slide {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.slick-slide {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  box-sizing: border-box;
+  /* min-width हटाएं या 0px रखें */
+  min-width: 0;
+}
+
+.team-card {
+  width: 320px;
+  max-width: 94vw;
+  background: #fff;
+  border: 1.6px solid #fa4b89;
+  border-radius: 57% 43% 62% 38% / 39% 61% 39% 61%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 12px 25px 12px;
+  margin-bottom: 45px;
+      margin-left: 15px;
+  position: relative;
+  box-shadow: 0 8px 32px #fa4b8920;
+  transition: box-shadow .17s, transform .17s;
+}
+
+.team-card:hover {
+  box-shadow: 0 12px 36px #fa4b8949;
+  transform: scale(1.025);
+}
+
+.team-imgbox {
+  position: relative;
+  width: 173px;
+  height: 173px;
+  margin-bottom: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.team-imgbox img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4.5px solid #fde7ee;
+  background: #fde7ee;
+  box-shadow: 0 5px 23px #fa4b8960;
+  z-index: 1;
+}
+
+/* Social icons on hover */
+.team-social-box {
+  position: absolute;
+  left: 50%;
+  bottom: -26px;
+  transform: translateX(-50%) scale(0.8);
+  opacity: 0;
+  pointer-events: none;
+  gap: 10px;
+  display: flex;
+  z-index: 11;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.team-card:hover .team-social-box,
+.team-card:focus-within .team-social-box {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) scale(1);
+}
+
+.team-social-box a {
+  background: #fa4b89;
+  color: #fff;
+  border-radius: 50%;
+  width: 39px;
+  height: 39px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  border: 3px solid #fff;
+  box-shadow: 0 3px 13px #fa4b8931;
+  transition: background 0.15s;
+  text-decoration: none;
+}
+
+.team-social-box a:hover {
+  background: #425ffd;
+}
+
+.team-name {
+  font-size: 22px;
+  color: #fa4b89;
+  font-weight: 700;
+  margin-top: 11px;
+  margin-bottom: 1.5px;
+  text-align: center;
+}
+
+.team-role {
+  color: #7b8aa3;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.team-card-row {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+  padding: 0 20px;
+  /* left-right space for arrows */
+  box-sizing: border-box;
+}
+
+.slick-slider,
+.slick-list {
+  overflow: visible !important;
+}
+
+.slick-track {
+  display: flex;
+  align-items: stretch;
+  min-width: 0;
+}
+
+/* Responsive */
+@media (max-width: 1125px) {
+  .team-slide {
+    width: 90vw;
+    max-width: 360px;
+  }
+}
+
+@media (max-width: 900px) {
+  .team-card {
+    width: 220px;
+  }
+}
+
+@media (max-width: 700px) {
+  .team-card {
+    width: 80vw;
+    max-width: 350px;
+    margin-bottom: 36px;
+    margin-left: 10px;
+  }
+
+  .team-imgbox {
+    width: 110px;
+    height: 110px;
+  }
+
+  .team-social-box {
+    bottom: -14px;
+    gap: 8px;
+  }
+
+  .team-social-box a {
+    width: 29px;
+    height: 29px;
+    font-size: 14px;
+  }
+}
+
+/* @media (max-width: 650px) {
+  .team-card { width: 95vw; max-width: 370px; }
+} */
+@media (max-width: 1200px) {
+  .slider-container {
+    max-width: 100vw;
+    padding: 0 4vw;
+  }
+
+  .team-card-row {
+    max-width: 100vw;
+    padding: 0 8px;
+  }
+}

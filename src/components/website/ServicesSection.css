@@ -1,0 +1,65 @@
+.services-section-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 38px 32px;
+  margin-top: 36px;
+}
+
+.service-card {
+  background: #fff;
+  color: #373969;
+  border: 1.6px solid #ffb9ce;
+  border-radius: 42px 32px 38px 36px;
+  width: 270px;
+  min-height: 330px;
+  padding: 34px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 5px 18px #fd9db420;
+  transition: all 0.25s cubic-bezier(.22,.63,.45,1.31);
+  cursor: pointer;
+}
+
+/* Highlighted (active) card */
+.service-card.active {
+  background: #5d75fa;
+  color: #fff;
+  border: none;
+  box-shadow: 0 8px 32px #5d75fa1c;
+  transform: scale(1.03);
+}
+
+/* Hover Effect */
+.service-card:hover,
+.service-card:focus-visible {
+  background: #5d75fa;
+  color: #fff;
+  border: none;
+  box-shadow: 0 8px 32px #5d75fa1c;
+  transform: scale(1.03);
+}
+
+/* Icon Style */
+.service-card .icon {
+  font-size: 54px;
+  margin-bottom: 18px;
+  background: #faebef;
+  color: #fd8aaf;
+  width: 74px;
+  height: 74px;
+  border-radius: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 16px #fd9db422;
+  transition: background .2s, color .2s;
+}
+
+.service-card:hover .icon,
+.service-card.active .icon {
+  background: #fff;
+  color: #5d75fa;
+  box-shadow: 0 3px 22px #fff2;
+}

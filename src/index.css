@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+brand-red {
+    color: #cc0000;
+}
+brand-gold {
+    color: #ffcc00;
+}
+brand-white {
+    color: #ffffff;
+}
+brand-black {
+    color: #000000;
+}
+
+background-brand {
+    background: #e3e3e3;
+}
+
+.slick-prev, .slick-next{
+    z-index: 1;;
+}
+.slick-prev:before, .slick-next:before {
+    color: #aa2326;
+}

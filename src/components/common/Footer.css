@@ -1,0 +1,135 @@
+.footer-section {
+  background: linear-gradient(118deg, #fff0f7 92%, #fbe8ef 100%);
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+.footer-container {
+  max-width: 1350px;
+  margin: 0 auto;
+  padding: 50px 20px 30px 20px;
+  display: flex;
+  gap: 40px;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.footer-col { flex: 1; min-width: 200px; max-width: 320px; }
+.brand-col { min-width: 260px; }
+
+.footer-logo {
+  display: flex; align-items: center; gap: 7px;
+  font-weight: 900; margin-bottom: 14px; letter-spacing: -.7px;
+}
+.logo-brand { color: #c82d63; line-height: 1.05;}
+.logo-brand span { color: #4763fa;}
+.footer-text {
+  font-size: 16px; color: #9c849f; margin-bottom: 26px; line-height: 1.4;
+}
+.footer-newsletter label {
+  font-weight: 700; font-size: 18px; color: #393869; margin-bottom: 6px; display: block;
+}
+.newsletter-box {
+  margin-top: 6px; display: flex; border: 2px solid #c82d63; border-radius: 14px; overflow: hidden; background: #fff;
+}
+.newsletter-box input {
+  flex: 1; border: none; font-size: 16px; padding: 12px 13px; background: transparent; outline: none;
+}
+.newsletter-box button {
+  background: #e14584; color: #fff; border: none;
+  font-weight: 700; font-size: 16px; padding: 0 18px; cursor: pointer;
+  border-radius: 0 11px 11px 0; transition: background .18s;
+}
+.newsletter-box button:hover { background: #4763fa; }
+
+.timing-col { display: flex; align-items: center; justify-content: center;}
+.timing-box {
+      background: #fff;
+    color: #393869;
+    font-size: 17px;
+    font-weight: 600;
+    min-width: 198px;
+    max-width: 260px;
+    box-shadow: 0 2px 17px #fa4b8922;
+    text-align: left;
+    border: 2px solid #fa4b89;
+    border-radius: 36px 48px 48px 45px / 53% 59% 46% 55%;
+    padding: 28px 18px 22px 18px;
+    margin: 25px 12px 28px 12px;
+}
+
+
+.timing-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-width: 220px;
+  font-size: 17px;
+  font-weight: 500;
+  margin-bottom: 3px;
+  /* तीन कॉलम के लिए spacing */
+}
+
+.timing-day {
+  flex: 1.5;
+  text-align: left;
+  padding-right: 8px;
+  color: #3e396f;
+  font-weight: 600;
+}
+.timing-colon {
+  flex: .2;
+  text-align: center;
+  color: #fa4b89;
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+.timing-hours {
+  flex: 1.7;
+  text-align: right;
+  font-weight: 550;
+  color: #4763fa;
+}
+
+
+
+.timing-box > div { margin-bottom: 4px; }
+
+.contact-col .footer-title,
+.gallery-col .footer-title { font-size: 19px; color: #e14584; font-weight: 700; margin-bottom: 3px; letter-spacing: .02em;}
+.line-under { height: 3px; width: 60px; background: #e14584; opacity: .16; margin-bottom: 10px; border-radius: 3px;}
+.footer-info { color: #393869; font-size: 15px; display: flex; flex-direction: column; gap: 3px; margin-bottom: 10px;}
+.footer-info i { color: #e14584; margin-right: 7px;}
+
+.footer-socials { display: flex; gap: 13px; margin-bottom: 10px;}
+.footer-socials a {
+  background: #e14584; color: #fff; font-size: 18px;
+  border-radius: 50%; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;
+  transition: background .12s;
+}
+.footer-socials a:hover { background: #4763fa; }
+
+.footer-gallery {
+  display: flex; flex-wrap: wrap; gap: 13px 13px; margin-top: 6px;
+}
+.footer-gallery-img img {
+  width: 55px; height: 55px; object-fit: cover; border-radius: 50%;
+  border: 3px dashed #e14584; background: #fff; transition: transform .16s;
+}
+.footer-gallery-img img:hover { transform: scale(1.09); }
+
+@media (max-width: 1050px) {
+  .footer-container { flex-direction: column; gap: 26px; align-items: flex-start;}
+  .footer-col { max-width: none; min-width: 0;}
+  .timing-box { margin-left: 0; margin-right: 0; padding: 12px 7vw;}
+  .footer-gallery-img img { width: 45px; height: 45px; }
+}
+@media (max-width: 600px) {
+  .footer-section { padding: 0; }
+  .footer-container { padding: 22px 3vw 18px 3vw;}
+  .footer-logo { font-size: 21px; }
+  .logo-brand { font-size: 15px; }
+  .footer-newsletter label { font-size: 13px; }
+  .newsletter-box button { font-size: 12px; padding: 0 11px;}
+  .timing-box { font-size: 12px; padding: 7px 2vw;}
+}

@@ -1,0 +1,142 @@
+.testimonial-section {
+  background: #fff;
+  padding: 70px 0 50px 0;
+}
+.testi-head {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.testi-label {
+  color: #fa4b89;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 7px;
+  display: inline-block;
+  position: relative;
+}
+.testi-label::after {
+  content: "";
+  display: block;
+  width: 90px;
+  height: 3px;
+  background: #fa4b89;
+  border-radius: 2px;
+  margin: 3px auto 0;
+  opacity: 0.22;
+}
+.testi-main-title {
+  color: #373969;
+  font-size: 47px;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -.5px;
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+}
+
+/* ===== Slider Container Fixes ========= */
+.testi-slider-container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 18px;
+  overflow: hidden;
+}
+
+/* ===== Slick Slide Fixes ========= */
+.slick-slider,
+.slick-list {
+  overflow: visible !important;
+}
+.slick-slide {
+  display: flex !important;
+  justify-content: center;
+  min-width: 0 !important;
+}
+
+/* ===== Testimonial Card ========== */
+.testi-card {
+  width: 100%;
+  max-width: 340px;    /* CARD CUTTING का FIX */
+  background: #fff0f5;
+  border: 2px solid #fa4b89;
+  border-radius: 36px 48px 48px 45px / 53% 59% 46% 55%;
+  padding: 28px 18px 22px 18px;
+  margin: 25px 12px 28px 12px;
+  min-height: 235px;
+  box-shadow: 0 4px 22px #fa4b8930;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow .16s, transform .14s;
+}
+.testi-card:hover {
+  box-shadow: 0 8px 38px #fa4b8949;
+  transform: translateY(-7px) scale(1.035);
+}
+.testi-card-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.testi-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px dashed #fa4b89;
+  background: #fff;
+  margin-right: 7px;
+  box-shadow: 0 3px 13px #fa4b8999;
+}
+.testi-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.testi-client {
+  color: #373969;
+  font-weight: 700;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.testi-quote {
+  color: #fa4b89;
+  font-size: 24px;
+  margin-left: 5px;
+}
+.testi-prof { color: #a48989; font-size: 15px; font-weight: 500; }
+.testi-stars { color: #fa4b89; margin: 7px 0 2px 0; font-size: 19px; }
+.testi-divider { border: none; height: 2px; background: #ffdce0; margin: 13px 0 13px 0; }
+.testi-content {
+  color: #817f93;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.57;
+  word-break: break-word;
+}
+
+.testi-cards-slider .slick-dots { margin-top: 18px; }
+.testi-cards-slider .slick-dots li button:before {
+  color: #fa4b89;
+  opacity: .22;
+  font-size: 15px;
+}
+.testi-cards-slider .slick-dots li.slick-active button:before {
+  color: #425ffd;
+  opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .testi-main-title { font-size: 32px; }
+  .testi-card { min-height: 190px; max-width: 280px; }
+  .testi-slider-container { max-width: 96vw; padding: 0 5vw; }
+}
+@media (max-width: 700px) {
+  .testi-main-title { font-size: 21px; }
+  .testi-card { min-height: 130px; max-width: 95vw; }
+  .testi-card-row { gap: 7px; }
+}
+
