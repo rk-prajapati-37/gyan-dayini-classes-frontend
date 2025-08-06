@@ -2,7 +2,7 @@
     position: sticky;
     top: 0;
     z-index: 1001;
-    /* background: #ffe6ef; */
+    background: #fff;
     box-shadow: 0 2px 13px #fa4b8955;
 }
 
@@ -24,12 +24,12 @@
 }
 
 .header-logo {
-    height: 58px;
-    width: 58px;
+    height: 70px;
+    width: 100px;
     border-radius: 50%;
     /* गोल लोगो */
-    background: #fff;
-    border: 3px solid #fa4b89;
+    /* background: #fff;
+    border: 3px solid #fa4b89; */
     box-shadow: 0 2px 9px #fa4b8930;
     object-fit: cover;
 }
@@ -385,8 +385,8 @@
     background: #fff;
     padding: 25px 30px 24px 30px;
     border-radius: 22px;
-    min-width: 270px;
-    max-width: 340px;
+    min-width: 300px;
+    max-width: 400px;
     min-height: 160px;
     box-shadow: 0 5px 40px #fa4b8927;
     position: relative;
@@ -407,12 +407,14 @@
 
 .modal-close-btn {
     position: absolute;
-    right: 16px;
-    top: 10px;
+    right: 0px;
+    top: 0px;
     border: none;
-    background: none;
-    color: #fa4b89;
-    font-size: 25px;
+    background: red;
+    border-radius: 0px 20px 5px 20px;
+    padding: 5px;
+    color: #fff;
+    font-size: 23px;
     cursor: pointer;
 }
 

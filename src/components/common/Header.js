@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-
-
 import "./Header.css";
 
 const navLinks = [
@@ -12,14 +10,14 @@ const navLinks = [
     path: "/about",
     submenu: [
       { title: "Our Team", path: "/team" },
-      { title: "Testimonial", path: "/testimonial" }
-    ]
+      { title: "Testimonial", path: "/testimonial" },
+    ],
   },
   { title: "Services", path: "/services" },
   { title: "Programs", path: "/programs" },
   { title: "Events", path: "/events" },
   { title: "Blogs", path: "/blogs" },
-  { title: "Contact", path: "/contact" }
+  { title: "Contact", path: "/contact" },
 ];
 
 export default function Header() {
@@ -31,18 +29,22 @@ export default function Header() {
   return (
     <header className="main-header">
       <div className="header-inner">
-       <div className="header-logo-group">
-  <img
-    src="/header_logo.png"
-    alt="Gyan Dayini Logo"
-    className="header-logo"
-  />
-<div className="header-brand">
-  <span className=" brand-red">Gyan Dayini</span>
-  <span className=" brand-blue"> Classes</span>
-</div>
-
-</div>
+        <div className="header-logo-group">
+          <a
+            href="https://gyandayiniclasses.in"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="/header_logo.png"
+              alt="Gyan Dayini Logo"
+              className="header-logo"
+            />
+          </a>
+          <div className="header-brand">
+            <span className=" brand-red">Gyan Dayini</span>
+            <span className=" brand-blue"> Classes</span>
+          </div>
+        </div>
 
         <nav className="header-nav">
           <ul>
@@ -60,11 +62,18 @@ export default function Header() {
                     aria-haspopup="true"
                     aria-expanded={dropdown === link.title}
                   >
-                    {link.title} <i className={`fas fa-chevron-down${dropdown === link.title ? " active" : ""}`} />
+                    {link.title}{" "}
+                    <i
+                      className={`fas fa-chevron-down${
+                        dropdown === link.title ? " active" : ""
+                      }`}
+                    />
                   </button>
                   <div
                     className="nav-dropdown"
-                    style={{ display: dropdown === link.title ? "block" : "none" }}
+                    style={{
+                      display: dropdown === link.title ? "block" : "none",
+                    }}
                   >
                     {link.submenu.map((sublink) => (
                       <Link key={sublink.title} to={sublink.path}>
@@ -84,39 +93,61 @@ export default function Header() {
         {/* Desktop only, hide on mobile */}
         <div className="header-rights desktop-only">
           <div className="header-questions">
-            <span className="header-phone-icon"><i className="fas fa-phone-alt"></i></span>
+            <span className="header-phone-icon">
+              <i className="fas fa-phone-alt"></i>
+            </span>
             <div>
               <div className="header-ques-text">Have any questions?</div>
               <div className="header-ques-phone">Free: + 0123 456 7890</div>
             </div>
           </div>
-          <button className="header-login-btn" onClick={() => setModalOpen(true)}>
+          <button
+            className="header-login-btn"
+            onClick={() => setModalOpen(true)}
+          >
             Login
           </button>
         </div>
         {/* Burger - mobile only */}
-        <button className="header-burger mobile-only" aria-label="Open menu" onClick={() => setMenuOpen((m) => !m)}>
-          <span /><span /><span />
+        <button
+          className="header-burger mobile-only"
+          aria-label="Open menu"
+          onClick={() => setMenuOpen((m) => !m)}
+        >
+          <span />
+          <span />
+          <span />
         </button>
       </div>
 
       {/* Mobile Drawer */}
       {menuOpen && (
         <>
-          <div className="mobile-menu-overlay" onClick={() => setMenuOpen(false)} />
+          <div
+            className="mobile-menu-overlay"
+            onClick={() => setMenuOpen(false)}
+          />
           <nav className="mobile-menu-drawer">
             <div className="mobile-menu-header">
-            <div className="header-logo-group">
-  <img
-    src="/header_logo.png"
-    alt="Gyan Dayini Logo"
-    className="header-logo"
-  />
-  <span className="header-brand">Gyan Dayini Classes</span>
-</div>
+              <div className="header-logo-group">
+                <a
+                  href="https://gyandayiniclasses.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="/header_logo.png"
+                    alt="Gyan Dayini Logo"
+                    className="header-logo"
+                  />
+                </a>
+                <span className="header-brand">Gyan Dayini Classes</span>
+              </div>
 
-
-              <button className="menu-close-btn" onClick={() => setMenuOpen(false)}>
+              <button
+                className="menu-close-btn"
+                onClick={() => setMenuOpen(false)}
+              >
                 <i className="fas fa-times"></i>
               </button>
             </div>
@@ -132,18 +163,27 @@ export default function Header() {
                         )
                       }
                     >
-                      {link.title} <i className={`fas fa-chevron-${mobileDropdown === link.title ? "up" : "down"}`} />
+                      {link.title}{" "}
+                      <i
+                        className={`fas fa-chevron-${
+                          mobileDropdown === link.title ? "up" : "down"
+                        }`}
+                      />
                     </button>
                     <div
                       className="mobile-nav-dropdown"
-                      style={{ display: mobileDropdown === link.title ? "block" : "none" }}
+                      style={{
+                        display:
+                          mobileDropdown === link.title ? "block" : "none",
+                      }}
                     >
                       {link.submenu.map((sublink) => (
                         <Link
                           key={sublink.title}
                           to={sublink.path}
                           onClick={() => setMenuOpen(false)}
-                        >{sublink.title}
+                        >
+                          {sublink.title}
                         </Link>
                       ))}
                     </div>
@@ -159,13 +199,21 @@ export default function Header() {
             </ul>
             {/* Only show in drawer (mobile-only) */}
             <div className="mobile-header-questions">
-              <span className="header-phone-icon"><i className="fas fa-phone-alt"></i></span>
+              <span className="header-phone-icon">
+                <i className="fas fa-phone-alt"></i>
+              </span>
               <div>
                 <div className="mobile-ques-text">Have any questions?</div>
                 <div className="mobile-ques-phone">Free: + 0123 456 7890</div>
               </div>
             </div>
-            <button className="mobile-login-btn" onClick={() => { setModalOpen(true); setMenuOpen(false); }}>
+            <button
+              className="mobile-login-btn"
+              onClick={() => {
+                setModalOpen(true);
+                setMenuOpen(false);
+              }}
+            >
               Login
             </button>
           </nav>
@@ -174,9 +222,15 @@ export default function Header() {
 
       {/* Login Modal */}
       {modalOpen && (
-        <div className="login-modal-overlay" onClick={() => setModalOpen(false)}>
-          <div className="login-modal" onClick={e => e.stopPropagation()}>
-            <button className="modal-close-btn" onClick={() => setModalOpen(false)}>
+        <div
+          className="login-modal-overlay"
+          onClick={() => setModalOpen(false)}
+        >
+          <div className="login-modal" onClick={(e) => e.stopPropagation()}>
+            <button
+              className="modal-close-btn"
+              onClick={() => setModalOpen(false)}
+            >
               <i className="fas fa-times"></i>
             </button>
             <LoginSignupTabs />
@@ -193,8 +247,18 @@ function LoginSignupTabs() {
   return (
     <div style={{ minWidth: 310, maxWidth: 340 }}>
       <div className="modal-tabs">
-        <button className={tab === "login" ? "active" : ""} onClick={() => setTab("login")}>Login</button>
-        <button className={tab === "signup" ? "active" : ""} onClick={() => setTab("signup")}>Sign Up</button>
+        <button
+          className={tab === "login" ? "active" : ""}
+          onClick={() => setTab("login")}
+        >
+          Login
+        </button>
+        <button
+          className={tab === "signup" ? "active" : ""}
+          onClick={() => setTab("signup")}
+        >
+          Sign Up
+        </button>
       </div>
       {tab === "login" ? (
         <form className="login-form">

@@ -47,8 +47,8 @@
     color: #393869;
     font-size: 17px;
     font-weight: 600;
-    min-width: 198px;
-    max-width: 260px;
+ min-width: 200px;
+    max-width: 350px;
     box-shadow: 0 2px 17px #fa4b8922;
     text-align: left;
     border: 2px solid #fa4b89;
@@ -131,5 +131,5 @@
   .logo-brand { font-size: 15px; }
   .footer-newsletter label { font-size: 13px; }
   .newsletter-box button { font-size: 12px; padding: 0 11px;}
-  .timing-box { font-size: 12px; padding: 7px 2vw;}
+  .timing-box { font-size: 12px; padding: 7px 15vw;}
 }

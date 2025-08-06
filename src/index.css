@@ -2,24 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-
-brand-red {
-    color: #cc0000;
-}
-brand-gold {
-    color: #ffcc00;
-}
-brand-white {
-    color: #ffffff;
-}
-brand-black {
-    color: #000000;
+:root {
+  --theme-bg: #fff;
+  --theme-text: #222;
+  --theme-accent: #007bff;
+  --bg-color: #ffffff;     /* light background */
+  --card-bg: #ffffff;
+  --text-dark: #222222;
+   /* --bg-red-color: #d32f2f; 
+   --bg-red-text: #fff;  */
 }
 
-background-brand {
-    background: #e3e3e3;
+body {
+  background-color: var(--bg-color);
+  color: var(--text-dark);
+  transition: all 0.3s ease;
+}
+
+/* Dark mode active state */
+.dark-mode {
+  --bg-color: #1c1c24;
+  --card-bg: #2a2a3a;
+  --text-dark: #f5f5f5;
+}
+
+[data-theme="dark"] {
+  --theme-bg: #222;
+  --theme-text: #fff;
 }
 
 .slick-prev, .slick-next{

@@ -1,0 +1,54 @@
+/* index.css */
+
+:root {
+  --primary-color: #fa4b89;
+  --text-color: #393869;
+  --bg-color: #fff;
+  --theme-bg: #fff;
+  --theme-text: #222;
+  --theme-accent: #007bff;
+}
+
+/* Theme Color Classes (via JS setAttribute) */
+[data-theme="color-2"] {
+  --primary-color: #425ffd;
+}
+[data-theme="color-3"] {
+  --primary-color: #30c97d;
+}
+[data-theme="color-4"] {
+  --primary-color: #ff9c00;
+}
+[data-theme="color-5"] {
+  --primary-color: #e92c2c;
+}
+
+/* Dark Mode Support */
+[data-mode="dark"] {
+  --bg-color: #1e1e1e;
+  --text-color: #fff;
+  --theme-bg: #222;
+  --theme-text: #fff;
+}
+
+/* Apply to your App */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+a {
+  color: var(--primary-color);
+}
+button {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+
+
+.slick-prev, .slick-next{
+    z-index: 1;;
+}
+.slick-prev:before, .slick-next:before {
+    color: #aa2326;
+}
