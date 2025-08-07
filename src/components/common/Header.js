@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext"; // Add this import
 
 import "./Header.css";
 
@@ -21,10 +22,21 @@ const navLinks = [
 ];
 
 export default function Header() {
+  const { login } = useAuth(); // Add this line
   const [menuOpen, setMenuOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [dropdown, setDropdown] = useState("");
   const [mobileDropdown, setMobileDropdown] = useState("");
+  const navigate = useNavigate();
+
+  const handleLogin = async (email, password) => {
+    // Assuming you have a login function that returns user data
+    const user = await login({ email, password });
+    if (user?.role === "teacher") navigate("/teacher");
+    else if (user?.role === "parent") navigate("/parent");
+    else if (user?.role === "student") navigate("/student");
+    else navigate("/");
+  };
 
   return (
     <header className="main-header">
@@ -233,7 +245,7 @@ export default function Header() {
             >
               <i className="fas fa-times"></i>
             </button>
-            <LoginSignupTabs />
+            <LoginSignupTabs onLogin={handleLogin} />
           </div>
         </div>
       )}
@@ -242,8 +254,20 @@ export default function Header() {
 }
 
 // Same as before for the modal.
-function LoginSignupTabs() {
+function LoginSignupTabs({ onLogin }) {
   const [tab, setTab] = useState("login");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (tab === "login") {
+      onLogin(email, password);
+    } else {
+      // Handle signup
+    }
+  };
+
   return (
     <div style={{ minWidth: 310, maxWidth: 340 }}>
       <div className="modal-tabs">
@@ -260,25 +284,29 @@ function LoginSignupTabs() {
           Sign Up
         </button>
       </div>
-      {tab === "login" ? (
-        <form className="login-form">
-          <label>Email</label>
-          <input type="email" placeholder="Enter email" />
-          <label>Password</label>
-          <input type="password" placeholder="Password" />
-          <button type="submit">Login</button>
-        </form>
-      ) : (
-        <form className="login-form">
-          <label>Name</label>
-          <input type="text" placeholder="Your Name" />
-          <label>Email</label>
-          <input type="email" placeholder="Enter email" />
-          <label>Password</label>
-          <input type="password" placeholder="Create a password" />
-          <button type="submit">Sign Up</button>
-        </form>
-      )}
+      <form className="login-form" onSubmit={handleSubmit}>
+        {tab === "signup" && (
+          <>
+            <label>Name</label>
+            <input type="text" placeholder="Your Name" />
+          </>
+        )}
+        <label>Email</label>
+        <input
+          type="email"
+          placeholder="Enter email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <label>Password</label>
+        <input
+          type="password"
+          placeholder={tab === "signup" ? "Create a password" : "Password"}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button type="submit">{tab === "login" ? "Login" : "Sign Up"}</button>
+      </form>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 // src/App.js
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from "./contexts/AuthContext";
 
 import TopHeader from "./components/common/TopHeader";
 import DesktopHeader from "./components/common/Header";
@@ -9,6 +10,10 @@ import Footer from "./components/common/Footer";
 import Home from './pages/Home';
 import About from './pages/About';
 import Login from './pages/Login';
+
+import TeacherDashboard from './components/dashboard/TeacherDashboard';
+import ParentDashboard from './components/dashboard/ParentDashboard';
+import StudentDashboard from './components/dashboard/StudentDashboard';
 
 // 🎨 Define available colors for text
 const COLORS = [
@@ -40,25 +45,30 @@ function App() {
   }, [darkMode]);
 
   return (
-    <Router>
-      <TopHeader
-        themeColor={themeColor}
-        setThemeColor={setThemeColor}
-        darkMode={darkMode}
-        setDarkMode={setDarkMode}
-        COLORS={COLORS}
-      />
+    <AuthProvider>
+      <Router>
+        <TopHeader
+          themeColor={themeColor}
+          setThemeColor={setThemeColor}
+          darkMode={darkMode}
+          setDarkMode={setDarkMode}
+          COLORS={COLORS}
+        />
 
-      <DesktopHeader />
+        <DesktopHeader />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/login" element={<Login />} />
-      </Routes>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
+          <Route path="/parent-dashboard" element={<ParentDashboard />} />
+          <Route path="/student-dashboard" element={<StudentDashboard />} />
+        </Routes>
 
-      <Footer />
-    </Router>
+        <Footer />
+      </Router>
+    </AuthProvider>
   );
 }
 

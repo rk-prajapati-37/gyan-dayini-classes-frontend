@@ -49,10 +49,22 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
   };
 
+  const signup = async ({ name, email, password }) => {
+    try {
+      const response = await authService.signup({ name, email, password });
+      setUser(response.user);
+      localStorage.setItem('token', response.token);
+      return response.user;
+    } catch (error) {
+      throw error;
+    }
+  };
+
   const value = {
     user,
     login,
     logout,
+    signup,
     loading,
     isAuthenticated: !!user
   };
