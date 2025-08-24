@@ -1,72 +1,62 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { authService } from '../services/authService';
 
 const AuthContext = createContext();
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
+    throw new Error('useAuth must be used within AuthProvider');
   }
   return context;
 };
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [token, setToken] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const initializeAuth = async () => {
+    // Check if user is logged in on app start
+    const savedToken = localStorage.getItem('token');
+    const savedUser = localStorage.getItem('user');
+    
+    if (savedToken && savedUser) {
       try {
-        const token = localStorage.getItem('token');
-        if (token) {
-          const userData = await authService.validateToken(token);
-          setUser(userData);
-        }
+        setToken(savedToken);
+        setUser(JSON.parse(savedUser));
       } catch (error) {
+        console.error('Error parsing saved user:', error);
+        // Clear invalid data
         localStorage.removeItem('token');
-      } finally {
-        setLoading(false);
+        localStorage.removeItem('user');
       }
-    };
-
-    initializeAuth();
+    }
+    
+    setLoading(false);
   }, []);
 
-  const login = async (credentials) => {
-    try {
-      const response = await authService.login(credentials);
-      setUser(response.user);
-      localStorage.setItem('token', response.token);
-      return response;
-    } catch (error) {
-      throw error;
-    }
+  const login = (userData, userToken) => {
+    setUser(userData);
+    setToken(userToken);
+    localStorage.setItem('token', userToken);
+    localStorage.setItem('user', JSON.stringify(userData));
   };
 
   const logout = () => {
-    localStorage.removeItem('token');
     setUser(null);
-  };
-
-  const signup = async ({ name, email, password }) => {
-    try {
-      const response = await authService.signup({ name, email, password });
-      setUser(response.user);
-      localStorage.setItem('token', response.token);
-      return response.user;
-    } catch (error) {
-      throw error;
-    }
+    setToken(null);
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    window.location.href = '/login';
   };
 
   const value = {
     user,
+    token,
     login,
     logout,
-    signup,
-    loading,
-    isAuthenticated: !!user
+    isAuthenticated: !!token && !!user,
+    loading
   };
 
   return (

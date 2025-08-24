@@ -1,29 +1,125 @@
 import React, { useState } from 'react';
-import { useAuth } from '../../contexts/AuthContext'; // import karo
-import { useNavigate } from 'react-router-dom'; // redirect ke liye
+import { authAPI } from '../../services/api';
+import './Login.css'; // अगर CSS file है
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const { login } = useAuth(); // context se login function lo
-  const navigate = useNavigate(); // navigation ke liye
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+    setError(''); // Clear error when user types
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setError('');
+    
     try {
-      await login({ email, password }); // login function call karo
-      navigate('/'); // login ke baad home ya dashboard par bhejo
-    } catch (err) {
-      alert('Login failed!');
+      const result = await authAPI.login(formData);
+      
+      if (result.success && result.token) {
+        // Save authentication data
+        localStorage.setItem('token', result.token);
+        localStorage.setItem('user', JSON.stringify(result.user));
+        
+        // Show success message
+        alert(`Welcome ${result.user.name}!`);
+        
+        // Redirect based on role
+        const { role } = result.user;
+        switch(role) {
+          case 'teacher':
+            window.location.href = '/teacher-dashboard';
+            break;
+          case 'parent':
+            window.location.href = '/parent-dashboard';
+            break;
+          case 'student':
+            window.location.href = '/student-dashboard';
+            break;
+          default:
+            window.location.href = '/dashboard';
+        }
+      } else {
+        setError(result.message || 'Login failed');
+      }
+    } catch (error) {
+      console.error('Login error:', error);
+      setError('Connection error. Please check your internet connection.');
     }
+    
+    setLoading(false);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Email" />
-      <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Password" />
-      <button type="submit">Login</button>
-    </form>
+    <div className="login-container">
+      <div className="login-card">
+        <div className="login-header">
+          <h2>🎓 Gyan Dayini Classes</h2>
+          <p>Login to continue</p>
+        </div>
+        
+        <form onSubmit={handleSubmit} className="login-form">
+          {error && (
+            <div className="error-message">
+              {error}
+            </div>
+          )}
+          
+          <div className="form-group">
+            <label htmlFor="email">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Enter your email"
+              required
+              disabled={loading}
+            />
+          </div>
+          
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              placeholder="Enter your password"
+              required
+              disabled={loading}
+            />
+          </div>
+          
+          <button 
+            type="submit" 
+            className="login-button"
+            disabled={loading}
+          >
+            {loading ? 'Logging in...' : 'Login'}
+          </button>
+        </form>
+        
+        {/* Test Credentials */}
+        <div className="test-credentials">
+          <h4>Test Credentials:</h4>
+          <p><strong>Email:</strong> teacher@gyandayini.com</p>
+          <p><strong>Password:</strong> teacher123</p>
+        </div>
+      </div>
+    </div>
   );
 };
 

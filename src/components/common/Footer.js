@@ -11,12 +11,12 @@ const timings = [
   "Sunday: Closed",
 ];
 const gallery = [
-  "/images/gallery1.jpg",
-  "/images/gallery2.jpg",
-  "/images/gallery3.jpg",
-  "/images/gallery4.jpg",
-  "/images/gallery5.jpg",
-  "/images/gallery6.jpg",
+  "/images/gallery/galary-1.jpg",
+  "/images/gallery/galary-2.jpg",
+  "/images/gallery/galary-3.jpg",
+  "/images/gallery/galary-4.jpg",
+  "/images/gallery/galary-5.jpg",
+  "/images/gallery/galary-6.jpg",
 ];
 
 export default function Footer() {

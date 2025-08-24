@@ -3,9 +3,9 @@ import Slider from "react-slick";
 import "./TestimonialsSection.css";
 
 const testimonials = [
-  { img: "/images/parent1.jpg", name: "Anil Sharma", profession: "Parent", rating: 5, text: "Gyan Dayini की टीम बच्चों की प्रोग्रेस और फीस सब कुछ क्लियर रखती है। Highly recommended!" },
-  { img: "/images/parent2.jpg", name: "Suman Devi", profession: "Parent", rating: 5, text: "Caring environment, teachers का behavior बहुत अच्छा है—बच्चे अच्छे marks ला रहे हैं।" },
-  { img: "/images/parent3.jpg", name: "Rakesh Singh", profession: "Parent", rating: 4, text: "My kids enjoy studies and activities both, thanks to GDC’s caring faculty." }
+  { img: "/images/Testimonials/parent1.jpg", name: "Anil Sharma", profession: "Parent", rating: 5, text: "Gyan Dayini की टीम बच्चों की प्रोग्रेस और फीस सब कुछ क्लियर रखती है। Highly recommended!" },
+  { img: "/images/Testimonials/parent1.jpg", name: "Suman Devi", profession: "Parent", rating: 5, text: "Caring environment, teachers का behavior बहुत अच्छा है—बच्चे अच्छे marks ला रहे हैं।" },
+  { img: "/images/Testimonials/parent1.jpg", name: "Rakesh Singh", profession: "Parent", rating: 4, text: "My kids enjoy studies and activities both, thanks to GDC’s caring faculty." }
 ];
 
 const sliderSettings = {
